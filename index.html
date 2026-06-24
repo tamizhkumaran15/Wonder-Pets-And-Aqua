@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- ✅ GOOGLE VERIFICATION -->
+  <meta name="google-site-verification" content="o6XfICvbaUeVqIvtLgp4e3P1VHWkCTGgTfD4he49ujs" />
+  <title>Wonder Pets and Aqua</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+
+  <!-- APP ICONS -->
+  <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="left">
+    <span id="hamburger">☰</span>
+    <span class="logo">WONDER PETS AND AQUA</span>
+  </div>
+
+  <div class="right">
+    <!-- CART ICON -->
+<div id="cartBtn" class="cart">
+  <svg class="nav-icon" viewBox="0 0 24 24">
+    <path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96
+    0 1.1.9 2 2 2h12v-2h-11.42c-.14 0-.25-.11-.25-.25l.03-.12
+    .9-1.63h7.72c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48
+    0-.55-.45-1-1-1h-16.31l-.94-2zm0 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2
+    2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2
+    2-.9 2-2-.9-2-2-2z"/>
+  </svg>
+  <span id="cart-count">0</span>
+</div>
+    <div class="profile">
+      <!-- PROFILE ICON -->
+<span id="profileIcon">
+  <svg class="nav-icon" viewBox="0 0 24 24">
+    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4
+    7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4
+    c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4
+    c0-3.2-6.4-4.8-9.6-4.8z"/>
+  </svg>
+</span>
+      <div id="profileDropdown" class="profile-dropdown">
+        <div class="profile-email" id="profileEmail">user@email.com</div>
+        <div onclick="openOrders()">My Orders</div>
+        <div onclick="showContact()">Contact Us</div>
+
+        <!-- ADMIN ONLY -->
+        <div id="adminSwitch" style="display:none; cursor:pointer;">
+          Switch to Admin Mode
+        </div>
+
+        <div class="logout" onclick="logout()">Logout</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SIDEBAR ================= -->
+<aside id="sidebar" class="sidebar">
+  <button onclick="showHome()">Home</button>
+  <button onclick="filterProducts('fish')">Fish</button>
+  <button onclick="filterProducts('accessory')">Accessories</button>
+  <button onclick="filterProducts('fish_food')">Fish Food</button>
+  <button onclick="filterProducts('pet')">Pets</button>
+</aside>
+
+<!-- ================= LANDING PAGE ================= -->
+<section id="landing" class="landing">
+  <div class="landing-overlay"></div>
+
+  <div class="landing-content">
+    <span class="landing-tag">
+      Your Complete Destination for Pets, Aquatics, Food & Accessories
+    </span>
+
+    <h1>
+      Wonder Pets <br />
+      <span>and Aqua</span>
+    </h1>
+
+    <p>
+      Premium fish, aquatic accessories, fish food and pets
+      sourced carefully for healthy living.
+    </p>
+
+    <div class="landing-actions">
+  <button class="btn-primary" onclick="showHome()">
+    Shop Now →
+  </button>
+</div>
+
+  </div>
+</section>
+
+<!-- ================= HOME ================= -->
+<main id="home" style="display:none">
+
+  <!-- 🔍 SEARCH (ZERO DB READS) -->
+  <input
+    type="text"
+    placeholder="Search products..."
+    oninput="searchProducts(this.value)"
+    style="
+      width:90%;
+      max-width:420px;
+      margin:20px auto;
+      display:block;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid #38bdf8;
+      font-size:15px;
+    "
+  >
+  <div id="product-list" class="products"></div>
+
+</main>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+<section id="adminDashboard" class="orders" style="display:none">
+  <button onclick="showHome()" class="back-btn">← Back to Home</button>
+
+  <h2>Admin Dashboard</h2>
+
+  <p>Total Products: <b><span id="adminTotalProducts">0</span></b></p>
+  <p>Total Orders: <b>0</b></p>
+  <p>Total Revenue: ₹<b>0</b></p>
+
+  <hr>
+
+  <h3>Manage Products</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="adminProducts"></tbody>
+    </table>
+  </div>
+<!-- 🔽 LOAD MORE PRODUCTS -->
+<button
+  onclick="loadMoreAdminProducts()"
+  class="load-more-btn"
+>
+  Load More Products
+</button>
+  <hr>
+
+<h3>Customer Orders</h3>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="adminOrders"></tbody>
+  </table>
+</div>
+
+<button onclick="loadAdminOrders(false)" style="
+  display:block;
+  margin:16px auto;
+  padding:10px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+">
+  Load More  Orders
+</button>
+
+  <h3>Add / Update Product</h3>
+
+ <div class="admin-form">
+  <input id="apName" placeholder="Product Name">
+
+  <!-- ✅ ADD THIS DROPDOWN -->
+  <select id="apType">
+    <option value="fish">Fish</option>
+    <option value="fish_food">Fish Food</option>
+    <option value="accessory">Accessory</option>
+    <option value="pet">Pet</option>
+  </select>
+
+  <input id="apPrice" type="number" placeholder="Price">
+  <input id="apDiscount" type="number" placeholder="Discount %">
+  <input id="apImage" placeholder="Image URL">
+
+  <button onclick="saveProduct()">Save Product</button>
+</div>
+</section>
+
+<!-- ================= MY ORDERS ================= -->
+<section id="orders" class="orders" style="display:none">
+  <button onclick="showHome()" class="back-btn">← Back to Home</button>
+
+  <h2>My Orders</h2>
+  <div id="orderSummary"></div>
+
+  <!-- ORDER STATUS & CANCEL -->
+<div id="orderActions" style="display:none; margin-top:20px;">
+  <div id="orderStatus" class="order-status placed">
+    Order Placed
+  </div>
+
+  <button id="cancelOrderBtn" class="cancel-order-btn">
+    Cancel Order
+  </button>
+</div>
+
+
+  <div class="order-form">
+    <input id="custName" placeholder="Full Name">
+    <input id="custPhone" placeholder="Phone Number">
+    <input id="custEmail" placeholder="Email Address">
+    <textarea id="custAddress" placeholder="Delivery Address"></textarea>
+    <button onclick="placeOrder()">Place Order</button>
+  </div>
+</section>
+
+<!-- ================= CONTACT US ================= -->
+<section id="contact" class="contact" style="display:none">
+  <button onclick="showHome()" class="back-btn">← Back to Home</button>
+
+  <h2>Contact Us</h2>
+  <p class="contact-sub">
+    Have questions about fish, pets, or orders? We’re here to help.
+  </p>
+
+  <div class="contact-grid">
+
+    <!-- LEFT INFO -->
+    <div class="contact-info">
+      <h3>Wonder Pets and Aqua</h3>
+
+      <p>📍 V.O.C Nagar Street Murugan Kovil Street, Vadalur,Panruti Road, Kurinjipadi, Cuddalore, Tamil Nadu</p>
+      <p>📞 +91 7904480227</p>
+      <p>✉️ wonderpetsaqua@gmail.com</p>
+
+      <div class="contact-hours">
+        <b>Working Hours</b>
+        <span>Mon – Sat : 9 AM – 5 PM</span>
+        <span>Sunday : 9 AM – 5 PM</span>
+      </div>
+    </div>
+    <!-- 📍 GOOGLE MAP LOCATION -->
+<div class="map-wrap" style="
+  margin-top:24px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,0.45);
+">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d928.8461147707072!2d79.55237397786036!3d11.567047710170645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a54b79e0e531a9f%3A0x9276dcc236ab48de!2sWonder%20pets%20and%20aqua!5e1!3m2!1sen!2sin!4v1767250210352!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+    <!-- RIGHT FORM -->
+    <form class="contact-form" onsubmit="sendContact(event)">
+      <input id="contactName" placeholder="Your Name" required>
+      <input id="contactEmail" placeholder="Your Email" required>
+      <input id="contactPhone" placeholder="Phone Number" required>
+      <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+
+      <!-- ✅ FIX: submit button only -->
+      <button type="submit">Send Message</button>
+    </form>
+
+  </div>
+</section>
+<!-- ================= CART CHECKOUT POPUP (SINGLE & CLEAN) ================= -->
+<div id="cartPopup" style="display:none">
+
+  <h3>Checkout</h3>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-total">
+    <p>Total Discount: ₹<span id="cartDiscount">0</span></p>
+    <p><b>Payable: ₹<span id="cartPayable">0</span></b></p>
+  </div>
+
+  <button id="checkoutBtn" onclick="proceedCheckout()">Checkout</button>
+
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<!-- ✅ ADD THIS LINE (INVOICE PDF SUPPORT) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="script.js?V=5"></script>
+</body>
+</html>

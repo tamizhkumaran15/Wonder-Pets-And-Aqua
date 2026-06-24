@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wonder Pets & Aqua | Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="module">
+  import { auth } from "./firebase.js";
+  import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword
+  } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+  window.login = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email.value, password.value);
+      location.href = "index.html";
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+
+  window.signup = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email.value, password.value);
+      alert("Account created successfully!");
+      location.href = "index.html";
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+</script>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* 🌊 FULL BACKGROUND IMAGE */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("https://static.vecteezy.com/system/resources/thumbnails/034/615/074/small_2x/beautiful-underwater-scenery-with-various-types-of-fish-and-coral-reefs-generative-ai-photo.jpeg") center / cover no-repeat fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🪟 GLASS LOGIN / SIGNUP BOX */
+.auth-box {
+  width: 360px;
+  padding: 32px;
+  border-radius: 20px;
+
+  /* 🔥 EXTRA TRANSPARENT GLASS */
+  background: rgba(255, 255, 255, 0.06);
+
+  /* 🔥 LIGHT BLUR (BACKGROUND STILL VISIBLE) */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.30);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+
+  color: #ffffff;
+  text-align: center;
+}
+
+
+/* Title */
+.auth-box h2 {
+  margin-bottom: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Inputs */
+.auth-box input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(255,255,255,0.85);
+  color: #000;
+  font-size: 14px;
+}
+
+
+/* ✅ LOGIN / SIGNUP BUTTON – GREEN TRANSPARENT */
+.auth-box button {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.45);
+
+  /* 🪟 GLASS AQUA DEFAULT */
+  background: rgba(120, 200, 255, 0.25);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+
+.auth-box button:hover {
+  background: rgba(140, 210, 255, 0.45); /* 🌤️ sky-blue glass */
+  border-color: rgba(180, 230, 255, 0.9);
+}
+
+/* ✅ "NEW USER? SIGNUP" COLOR FIX */
+.toggle {
+  margin-top: 18px;
+  font-size: 14px;
+  color: rgba(230,255,255,0.85);
+}
+
+.toggle span {
+  color: rgba(160, 220, 255, 0.95);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+
+  transition: color 0.3s ease;
+}
+
+.toggle span:hover {
+  color: #ffffff; /* clean highlight */
+}
+
+
+/* 📱 RESPONSIVE */
+@media (max-width: 480px) {
+  .auth-box {
+    width: 92%;
+    padding: 26px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="auth-box">
+  <h2 id="title">Login</h2>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button id="loginBtn" onclick="login()">Login</button>
+  <button id="signupBtn" onclick="signup()" style="display:none">Signup</button>
+
+  <div class="toggle">
+    <span id="toggleText" onclick="toggleForm()">New user? Signup</span>
+  </div>
+</div>
+
+<script>
+function toggleForm() {
+  if (loginBtn.style.display !== "none") {
+    loginBtn.style.display = "none";
+    signupBtn.style.display = "block";
+    title.innerText = "Signup";
+    toggleText.innerText = "Already have an account? Login";
+  } else {
+    loginBtn.style.display = "block";
+    signupBtn.style.display = "none";
+    title.innerText = "Login";
+    toggleText.innerText = "New user? Signup";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2194 @@
+/* ===============================
+   COLOR VARIABLES (SKY BLUE + BLACK)
+================================ */
+:root {
+  --black: #020617;
+  --navy: #020617;
+  --sky: #38bdf8;
+  --sky-soft: #7dd3fc;
+  --sky-hover: #0ea5e9;
+  --white: #ffffff;
+  --bg-soft: #f1f5f9;
+  --card-bg: #ffffff;
+  --border-soft: #e5e7eb;
+  --danger: #dc2626;
+  --success: #16a34a;
+}
+
+/* ===============================
+   GLOBAL
+================================ */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+/* ===============================
+   HEADER
+================================ */
+/* ===============================
+   HEADER – PREMIUM BLUE × BLACK
+================================ */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+
+  /* 🔥 COOL GRADIENT */
+  background: linear-gradient(
+    90deg,
+    #020617 0%,
+    #020617 30%,
+    #0b3c5d 60%,
+    #020617 100%
+  );
+
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  z-index: 5000;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+}
+
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+#hamburger {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+#hamburger:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ===============================
+   HEADER RIGHT (CART + PROFILE)
+================================ */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart {
+  position: relative;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.cart:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+#profileIcon {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+#profileIcon:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ===============================
+   PROFILE DROPDOWN
+================================ */
+.profile {
+  position: relative;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 220px;
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 6000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.profile-dropdown div {
+  padding: 14px 16px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* 🔥 SAME BLUE HOVER AS SIDEBAR */
+.profile-dropdown div:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.35),
+    rgba(56,189,248,0.15)
+  );
+  border-left: 3px solid var(--sky);
+  padding-left: 20px;
+}
+
+.profile-email {
+  background: rgba(255,255,255,0.06);
+  font-size: 13px;
+  cursor: default;
+}
+
+.profile-dropdown .logout {
+  color: #fca5a5;
+}
+
+.profile-dropdown .logout:hover {
+  background: rgba(239,68,68,0.15);
+  border-left: 3px solid #ef4444;
+}
+
+/* ===============================
+   SIDEBAR (HAMBURGER MENU)
+================================ */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -230px;
+  width: 210px;
+  height: calc(100vh - 60px);
+  background: linear-gradient(180deg, var(--black), #020617);
+  padding: 15px;
+  transition: 0.3s ease;
+  z-index: 4000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* MENU BUTTONS */
+.sidebar button {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+/* 🔥 SAME BLUE HOVER EFFECT */
+.sidebar button:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.35),
+    rgba(56,189,248,0.15)
+  );
+  border-color: var(--sky);
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.6);
+  padding-left: 22px;
+}
+
+/* ACTIVE (HOME SELECTED) */
+.sidebar button.active {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.45),
+    rgba(56,189,248,0.2)
+  );
+  border: 1px solid var(--sky);
+  box-shadow: 0 0 0 1px rgba(56,189,248,0.7);
+}
+#home,
+#orders,
+#adminDashboard {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background: var(--bg-soft);
+}
+
+#home,
+#orders,
+#adminDashboard {
+  display: none;
+}
+
+/* ===============================
+   PRODUCTS
+================================ */
+.products {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.product {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.product button {
+  background: linear-gradient(90deg, var(--sky), var(--sky-soft));
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #020617;
+}
+
+/* ===============================
+   CART POPUP
+================================ */
+#cartPopup {
+  position: fixed;
+  top: 70px;
+  right: 18px;
+  width: 340px;
+  background: var(--black);
+  color: white;
+  border-radius: 16px;
+  padding: 16px;
+  z-index: 7000;
+  display: none;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .products {
+    padding: 16px;
+  }
+}
+
+/* ===============================
+   CHECKOUT BUTTON – BLUE GLOW
+================================ */
+#checkoutBtn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,1),
+    rgba(14,165,233,1)
+  );
+  color: #020617;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+#checkoutBtn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,1),
+    rgba(125,211,252,1)
+  );
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.7),
+    0 12px 28px rgba(56,189,248,0.45);
+  transform: translateY(-1px);
+}
+
+#checkoutBtn:active {
+  transform: scale(0.98);
+}
+
+/* ===============================
+   PROFILE DROPDOWN – BLUE BORDER EFFECT (MATCH SIDEBAR)
+================================ */
+
+/* default state */
+.profile-dropdown div {
+  border-left: 3px solid transparent;
+  transition:
+    background 0.25s ease,
+    padding-left 0.25s ease,
+    border-left 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* hover state – SAME AS SIDEBAR HOME */
+.profile-dropdown div:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.18),
+    rgba(56,189,248,0.05)
+  );
+
+  border-left: 3px solid var(--sky);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(56,189,248,0.35),
+    0 8px 20px rgba(56,189,248,0.15);
+
+  padding-left: 22px;
+}
+
+/* email row should NOT animate */
+.profile-dropdown .profile-email:hover {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid transparent;
+  box-shadow: none;
+  padding-left: 16px;
+  cursor: default;
+}
+/* =========================================================
+   EXACT SIDEBAR + PROFILE DROPDOWN ACTIVE STYLE (MATCH IMAGE)
+========================================================= */
+
+/* ---------- BASE STYLE (SIDEBAR + PROFILE DROPDOWN) ---------- */
+.sidebar button,
+.profile-dropdown div {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  color: white;
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border 0.25s ease;
+}
+
+/* ---------- EXACT "HOME" ACTIVE LOOK ---------- */
+.sidebar button.active,
+.sidebar button:hover,
+.profile-dropdown div:hover {
+
+  /* 🔵 SAME BLUE GRADIENT */
+  background: linear-gradient(
+    180deg,
+    rgba(56,189,248,0.22),
+    rgba(2,6,23,0.95)
+  );
+
+  /* 🔵 THIN BLUE BORDER */
+  border: 1px solid rgba(56,189,248,0.75);
+
+  /* 🔵 INNER + OUTER GLOW (VERY IMPORTANT) */
+  box-shadow:
+    inset 0 0 0 1px rgba(56,189,248,0.35),
+    0 0 0 1px rgba(56,189,248,0.45);
+
+}
+
+/* ---------- REMOVE SLIDE / SHIFT (KEEP IT CALM LIKE IMAGE) ---------- */
+.sidebar button:hover,
+.profile-dropdown div:hover {
+  padding-left: 16px;
+}
+
+/* ---------- PROFILE EMAIL SHOULD NOT ACT LIKE BUTTON ---------- */
+.profile-dropdown .profile-email {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+.profile-dropdown .profile-email:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* ---------- LOGOUT SLIGHT RED TINT BUT SAME STYLE ---------- */
+.profile-dropdown .logout:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(239,68,68,0.18),
+    rgba(2,6,23,0.95)
+  );
+  border: 1px solid rgba(239,68,68,0.6);
+  box-shadow:
+    inset 0 0 0 1px rgba(239,68,68,0.25),
+    0 0 0 1px rgba(239,68,68,0.35);
+}
+
+/* ===============================
+   BLUE SVG ICON STYLE (HEADER)
+================================ */
+
+.nav-icon {
+  width: 22px;
+  height: 22px;
+  fill: var(--sky);       /* main blue */
+  transition: fill 0.25s ease, transform 0.2s ease;
+}
+
+/* hover glow */
+.cart:hover .nav-icon,
+#profileIcon:hover .nav-icon {
+  fill: var(--sky-soft);
+  transform: scale(1.08);
+}
+
+/* icon hover background */
+.cart,
+#profileIcon {
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.cart:hover,
+#profileIcon:hover {
+  background: rgba(56,189,248,0.18);
+}
+
+/* =================================================
+   MY ORDERS PAGE – PREMIUM CHECKOUT STYLE
+================================================= */
+
+/* orders container */
+#orders.orders {
+  max-width: 900px;
+  margin: 30px auto;
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8fafc
+  );
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* heading */
+#orders h2 {
+  margin-top: 0;
+  font-size: 26px;
+  color: #020617;
+}
+
+/* order list text */
+#orderSummary p {
+  font-size: 15px;
+  margin: 8px 0;
+  color: #020617;
+}
+
+/* divider */
+#orderSummary hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56,189,248,0.6),
+    transparent
+  );
+  margin: 16px 0;
+}
+
+/* payable highlight */
+#orderSummary h3 {
+  margin-top: 12px;
+  color: #0ea5e9;
+}
+
+/* ===============================
+   ORDER FORM LAYOUT
+================================ */
+
+.order-form {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* full width fields */
+.order-form textarea,
+.order-form button {
+  grid-column: span 2;
+}
+
+/* inputs */
+.order-form input,
+.order-form textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(2,6,23,0.2);
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* focus */
+.order-form input:focus,
+.order-form textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.25);
+}
+
+/* textarea */
+.order-form textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+/* ===============================
+   PLACE ORDER BUTTON (MATCH CHECKOUT)
+================================ */
+
+.order-form button {
+  margin-top: 8px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,1),
+    rgba(14,165,233,1)
+  );
+
+  color: #020617;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+/* hover */
+.order-form button:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,1),
+    rgba(125,211,252,1)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.7),
+    0 12px 28px rgba(56,189,248,0.45);
+
+  transform: translateY(-1px);
+}
+
+/* click */
+.order-form button:active {
+  transform: scale(0.98);
+}
+
+/* ===============================
+   BACK BUTTON
+================================ */
+
+.back-btn {
+  background: transparent;
+  border: 1px solid rgba(56,189,248,0.6);
+  color: #0ea5e9;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.back-btn:hover {
+  background: rgba(56,189,248,0.15);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 640px) {
+  .order-form {
+    grid-template-columns: 1fr;
+  }
+
+  .order-form textarea,
+  .order-form button {
+    grid-column: span 1;
+  }
+}
+
+/* =================================================
+   MY ORDERS – BLACK × BLUE PREMIUM CHECKOUT
+================================================= */
+
+/* main orders card */
+#orders.orders {
+  max-width: 920px;
+  margin: 30px auto;
+  padding: 32px;
+
+  background: linear-gradient(
+    180deg,
+    #020617 0%,
+    #020617 40%,
+    #020617 100%
+  );
+
+  border-radius: 22px;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(56,189,248,0.25);
+
+  color: #e5e7eb;
+}
+
+/* back button */
+.back-btn {
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid rgba(56,189,248,0.6);
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.back-btn:hover {
+  background: rgba(56,189,248,0.15);
+}
+
+/* heading */
+#orders h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+/* order items */
+#orderSummary p {
+  font-size: 15px;
+  margin: 10px 0;
+  color: #e5e7eb;
+}
+
+/* divider line */
+#orderSummary hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56,189,248,0.6),
+    transparent
+  );
+  margin: 18px 0;
+}
+
+/* discount text */
+#orderSummary p b {
+  color: #38bdf8;
+}
+
+/* payable amount */
+#orderSummary h3 {
+  margin-top: 14px;
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+/* ===============================
+   ORDER FORM
+================================ */
+
+.order-form {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* full-width */
+.order-form textarea,
+.order-form button {
+  grid-column: span 2;
+}
+
+/* inputs */
+.order-form input,
+.order-form textarea {
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.04)
+  );
+
+  border: 1px solid rgba(56,189,248,0.35);
+  color: white;
+  font-size: 14px;
+
+  outline: none;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.order-form input::placeholder,
+.order-form textarea::placeholder {
+  color: #cbd5f5;
+}
+
+/* focus */
+.order-form input:focus,
+.order-form textarea:focus {
+  border-color: #38bdf8;
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.7),
+    0 0 20px rgba(56,189,248,0.35);
+}
+
+/* textarea */
+.order-form textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* ===============================
+   PLACE ORDER BUTTON – BLUE GLOW
+================================ */
+
+.order-form button {
+  margin-top: 10px;
+  padding: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  color: #020617;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.order-form button:hover {
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.9),
+    0 18px 40px rgba(56,189,248,0.55);
+  transform: translateY(-2px);
+}
+
+.order-form button:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 640px) {
+  .order-form {
+    grid-template-columns: 1fr;
+  }
+
+  .order-form textarea,
+  .order-form button {
+    grid-column: span 1;
+  }
+}
+
+/* =====================================================
+   ADMIN DASHBOARD – BLACK × BLUE THEME
+===================================================== */
+
+#adminDashboard {
+  background: linear-gradient(
+    180deg,
+    #020617,
+    #020617 40%,
+    #0b1228 100%
+  );
+  color: white;
+  padding: 30px;
+}
+
+/* Headings */
+#adminDashboard h2,
+#adminDashboard h3 {
+  color: var(--sky);
+  margin-bottom: 12px;
+}
+
+/* Stats text */
+#adminDashboard p {
+  color: #e5e7eb;
+  margin: 6px 0;
+}
+
+/* Divider */
+#adminDashboard hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56,189,248,0.6),
+    transparent
+  );
+  margin: 24px 0;
+}
+
+/* ===============================
+   ADMIN TABLE
+================================ */
+.table-wrap {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrap th {
+  text-align: left;
+  padding: 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.25),
+    rgba(2,6,23,0.9)
+  );
+  color: white;
+  font-weight: 600;
+}
+
+.table-wrap td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: #e5e7eb;
+}
+
+.table-wrap tr:hover td {
+  background: rgba(56,189,248,0.08);
+}
+
+.table-wrap img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 4px;
+}
+
+/* ===============================
+   EDIT / DELETE BUTTONS
+================================ */
+.edit-btn {
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+  color: #020617;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.edit-btn:hover {
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.6),
+    0 8px 18px rgba(56,189,248,0.4);
+}
+
+.delete-btn {
+  background: linear-gradient(
+    90deg,
+    #ef4444,
+    #dc2626
+  );
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  box-shadow:
+    0 0 0 1px rgba(239,68,68,0.6),
+    0 8px 18px rgba(239,68,68,0.4);
+}
+
+/* ===============================
+   ADD / UPDATE PRODUCT FORM
+================================ */
+.admin-form {
+  background: rgba(255,255,255,0.04);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(56,189,248,0.35);
+  background: rgba(2,6,23,0.9);
+  color: white;
+  font-size: 14px;
+}
+
+.admin-form input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-form input:focus {
+  outline: none;
+  border-color: var(--sky);
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.6),
+    0 0 18px rgba(56,189,248,0.35);
+}
+
+/* Save Product Button */
+.admin-form button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+  color: #020617;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-form button:hover {
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.7),
+    0 14px 32px rgba(56,189,248,0.45);
+}
+
+/* ===============================
+   BACK BUTTON
+================================ */
+.back-btn {
+  background: transparent;
+  color: var(--sky);
+  border: 1px solid rgba(56,189,248,0.5);
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.back-btn:hover {
+  background: rgba(56,189,248,0.15);
+}
+
+/* =====================================================
+   PRODUCT IMAGE – PERFECT RESPONSIVE FIX
+===================================================== */
+
+/* Card container */
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Image wrapper (important) */
+.product img {
+  width: 100%;
+  height: 180px;              /* desktop default */
+  object-fit: contain;       /* 🔥 NO CROPPING */
+  background: #ffffff;       /* clean white behind image */
+  padding: 10px;
+  border-radius: 14px;
+}
+
+/* Text spacing */
+.product h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* ===============================
+   TABLET (≤ 768px)
+================================ */
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .product img {
+    height: 160px;
+    padding: 8px;
+  }
+}
+
+/* ===============================
+   MOBILE (≤ 480px)
+================================ */
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 14px;
+  }
+
+  .product {
+    border-radius: 16px;
+  }
+
+  .product img {
+    height: 200px;                  /* taller for mobile */
+    object-fit: contain;            /* no trim */
+    padding: 12px;
+  }
+
+  .product h3 {
+    font-size: 17px;
+  }
+
+  .product button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* =====================================================
+   LANDING PAGE – FULL SCREEN AQUARIUM (FINAL FIX)
+===================================================== */
+
+.landing {
+  position: fixed;
+  top: 60px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - 60px);
+
+  background-image:
+    linear-gradient(
+      rgba(2, 6, 23, 0.45),
+      rgba(2, 6, 23, 0.55)
+    ),
+    url("https://tse1.mm.bing.net/th/id/OIP.Wip-ueVBelo-b643a-K-bAHaE8");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  z-index: 1;
+}
+/* 🔥 FIX: Landing should not block other pages */
+#home,
+#orders,
+#contact,
+#adminDashboard {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* LEFT CONTENT */
+.landing-content {
+  padding: 80px;
+  z-index: 2;
+}
+
+.landing-tag {
+  color: var(--sky);
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.landing-content h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  margin: 10px 0;
+}
+
+.landing-content h1 span {
+  color: var(--sky);
+}
+
+.landing-content p {
+  font-size: 16px;
+  max-width: 460px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 20px 0 30px;
+}
+
+/* BUTTONS */
+.landing-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--sky), var(--sky-soft));
+  color: #020617;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 28px rgba(56,189,248,0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =====================================================
+   LANDING PAGE – FULL SCREEN AQUARIUM (FIXED)
+===================================================== */
+
+.landing {
+  position: fixed;
+  top: 60px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - 60px);
+
+  /* ✅ IMAGE FIRST, OVERLAY SECOND */
+  background-image:
+    linear-gradient(
+      rgba(2, 6, 23, 0.45),
+      rgba(2, 6, 23, 0.55)
+    ),
+    url("https://tse1.mm.bing.net/th/id/OIP.Wip-ueVBelo-b643a-K-bAHaE8");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  z-index: 1;
+}
+
+/* ===============================
+   CONTENT
+================================ */
+
+.landing-content {
+  max-width: 720px;
+  padding: 80px 32px;
+  text-align: center;
+
+  /* 🔥 ensures text is above bg */
+  position: relative;
+  z-index: 2;
+}
+
+.landing-tag {
+  color: var(--sky);
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.landing-content h1 {
+  font-size: 54px;
+  line-height: 1.1;
+  margin: 12px 0;
+  font-weight: 800;
+}
+
+.landing-content h1 span {
+  color: var(--sky);
+}
+
+.landing-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 22px auto 34px;
+  max-width: 520px;
+  opacity: 0.95;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.landing-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--sky), var(--sky-soft));
+  color: #020617;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .landing-content {
+    padding: 40px 22px;
+  }
+
+  .landing-content h1 {
+    font-size: 34px;
+  }
+
+  .landing-actions {
+    flex-direction: column;
+  }
+
+  .landing-actions button {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   CONTACT US – BLACK × BLUE PREMIUM
+===================================================== */
+
+.contact {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 40px;
+
+  background: linear-gradient(
+    180deg,
+    #020617,
+    #020617 60%,
+    #0b1228
+  );
+
+  border-radius: 22px;
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(56,189,248,0.25);
+
+  color: #e5e7eb;
+}
+
+.contact h2 {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+
+.contact-sub {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 28px;
+}
+
+/* LEFT INFO */
+.contact-info {
+  background: rgba(255,255,255,0.04);
+  padding: 24px;
+  border-radius: 18px;
+}
+
+.contact-info h3 {
+  color: var(--sky);
+  margin-bottom: 14px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+}
+
+.contact-hours {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #cbd5f5;
+}
+
+/* FORM */
+.contact-form {
+  background: rgba(255,255,255,0.04);
+  padding: 26px;
+  border-radius: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.04)
+  );
+
+  border: 1px solid rgba(56,189,248,0.35);
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #cbd5f5;
+}
+
+.contact-form textarea {
+  min-height: 110px;
+  resize: none;
+}
+
+/* BUTTON */
+.contact-form button {
+  margin-top: 6px;
+  padding: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  color: #020617;
+  border: none;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-form button:hover {
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.9),
+    0 18px 40px rgba(56,189,248,0.55);
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    padding: 26px;
+  }
+}
+/* =====================================================
+   CONTACT US – FULL RESPONSIVE (DESKTOP / TAB / MOBILE)
+===================================================== */
+
+.contact-page {
+  position: fixed;
+  top: 60px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100vh - 60px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    180deg,
+    #020617,
+    #020617 40%,
+    #0b1228 100%
+  );
+
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* main card */
+.contact-card {
+  width: 100%;
+  max-width: 520px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.04)
+  );
+
+  border-radius: 22px;
+  padding: 32px;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(56,189,248,0.35);
+
+  color: white;
+}
+
+/* heading */
+.contact-card h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 28px;
+  text-align: center;
+  color: var(--sky);
+}
+
+/* form layout */
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* inputs */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(56,189,248,0.35);
+
+  background: rgba(2,6,23,0.9);
+  color: white;
+
+  font-size: 14px;
+  outline: none;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #cbd5f5;
+}
+
+/* focus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--sky);
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.7),
+    0 0 18px rgba(56,189,248,0.35);
+}
+
+/* textarea */
+.contact-form textarea {
+  resize: none;
+  min-height: 110px;
+}
+
+/* send button */
+.contact-form button {
+  margin-top: 10px;
+  padding: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #0ea5e9
+  );
+
+  color: #020617;
+  border: none;
+  border-radius: 16px;
+
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-form button:hover {
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.9),
+    0 18px 40px rgba(56,189,248,0.55);
+  transform: translateY(-2px);
+}
+
+.contact-form button:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   TABLET
+================================ */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 28px;
+  }
+
+  .contact-card h2 {
+    font-size: 24px;
+  }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 16px;
+  }
+
+  .contact-card {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .contact-card h2 {
+    font-size: 22px;
+  }
+
+  .contact-form button {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+/* ===============================
+   MOBILE SCROLL FIX (CONTACT PAGE)
+================================ */
+
+/* allow scrolling only for content pages */
+#contact,
+#home,
+#orders,
+#adminDashboard {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* smooth mobile scroll */
+}
+
+/* contact page full height */
+#contact {
+  height: calc(100vh - 60px);
+  padding-bottom: 40px;
+}
+
+/* mobile spacing fix */
+@media (max-width: 640px) {
+  .contact {
+    padding: 20px 16px;
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-form button {
+    margin-bottom: 30px; /* 🔥 ensures Send button visible */
+  }
+}
+/* =====================================================
+   ADMIN PRODUCT TABLE – PERFECT ALIGNMENT FIX
+===================================================== */
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px; /* spacing between rows */
+}
+
+/* Header */
+.table-wrap th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Row */
+.table-wrap tbody tr {
+  background: linear-gradient(
+    90deg,
+    rgba(2,6,23,0.95),
+    rgba(11,18,40,0.95)
+  );
+  border-radius: 14px;
+}
+
+/* Cells */
+.table-wrap td {
+  padding: 14px 16px;
+  vertical-align: middle; /* 🔥 KEY FIX */
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* First & last cell rounded */
+.table-wrap tbody tr td:first-child {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+.table-wrap tbody tr td:last-child {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* IMAGE COLUMN */
+.table-wrap td img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px;
+  display: block;
+  margin: auto;
+}
+
+/* NAME COLUMN */
+.table-wrap td:nth-child(2) {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* PRICE & DISCOUNT */
+.table-wrap td:nth-child(3),
+.table-wrap td:nth-child(4) {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ACTION BUTTONS */
+.table-wrap td:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* BUTTONS */
+.edit-btn,
+.delete-btn {
+  width: 80px;
+  text-align: center;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+/* =====================================================
+   ADMIN TABLE – SAME LAYOUT ON ALL DEVICES
+===================================================== */
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;              /* 🔥 horizontal scroll on mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap table {
+  min-width: 720px;              /* 🔥 keeps columns intact */
+  border-collapse: collapse;
+}
+
+/* Row styling */
+.table-wrap tbody tr {
+  background: linear-gradient(
+    90deg,
+    rgba(2,6,23,0.95),
+    rgba(11,18,40,0.95)
+  );
+}
+
+/* Cells */
+.table-wrap th,
+.table-wrap td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;           /* 🔥 prevents text wrapping */
+}
+
+/* Image column */
+.table-wrap td img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px;
+}
+
+/* Actions */
+.table-wrap td:last-child {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons uniform */
+.edit-btn,
+.delete-btn {
+  min-width: 80px;
+}
+
+/* ===============================
+   MOBILE / TABLET
+================================ */
+@media (max-width: 768px) {
+  .table-wrap {
+    border-radius: 12px;
+  }
+}
+/* ===============================
+   FIX: DUPLICATE BACK BUTTON
+================================ */
+
+/* Hide all back buttons by default */
+.back-btn {
+  display: none;
+}
+
+/* Show back button ONLY inside active sections */
+#orders.active .back-btn,
+#contact.active .back-btn,
+#adminDashboard.active .back-btn {
+  display: inline-flex;
+}
+
+/* ===============================
+   ORDER SUMMARY ACTIONS
+================================ */
+
+#orderActions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* STATUS BADGE */
+.order-status {
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* GREEN – PLACED */
+.order-status.placed {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: #020617;
+  box-shadow: 0 10px 30px rgba(34,197,94,0.45);
+}
+
+/* RED – CANCELLED */
+.order-status.cancelled {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 10px 30px rgba(239,68,68,0.45);
+}
+
+/* CANCEL BUTTON */
+.cancel-order-btn {
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 15px;
+
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: white;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cancel-order-btn:hover {
+  box-shadow:
+    0 0 0 1px rgba(239,68,68,0.7),
+    0 14px 32px rgba(239,68,68,0.45);
+  transform: translateY(-1px);
+}
+
+.cancel-order-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   LOAD MORE BUTTON (SHARED STYLE)
+================================ */
+.load-more-btn {
+  display: block;
+  margin: 16px auto;
+  padding: 10px 22px;   /* ✅ SIZE FIX */
+  border: none;
+  border-radius: 10px; /* ✅ SAME CURVE */
+  background: #ffffff;
+  color: #020617;
+  font-weight: 700;    /* ✅ SAME WEIGHT */
+  font-size: 13px;     /* ✅ SAME TEXT SIZE */
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.load-more-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* ===============================
+   FULL SCREEN SECTION FIX
+================================ */
+.fullscreen-section {
+  position: fixed;
+  top: 64px; /* header height */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  z-index: 20;
+}
+
+#apType {
+  display: none;
+}
+
+#home {
+  height: calc(100vh - 70px); /* header height */
+  overflow-y: auto;
+}
+
+/* ===============================
+   MOBILE SCROLL FIX – ORDERS PAGE
+================================ */
+
+html, body {
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.orders {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 120px; /* space for Place Order button */
+}
+
+/* Fix order form layout on small screens */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Ensure Place Order button is reachable */
+.order-form button {
+  margin-bottom: 30px;
+}
+
+/* ===============================
+   ORDER STATUS HIDE (ONLY STATUS)
+================================ */
+
+.order-status {
+  display: none !important;
+}
+
+/* Cancel button mobile safety */
+#orderActions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.orders {
+  overflow-y: auto;
+  padding-bottom: 120px;
+}
+
+/* ===============================
+   MY ORDERS – CARD STYLE
+================================ */
+
+.order-card {
+  background: linear-gradient(145deg, #020617, #020617);
+  border: 1px solid #0ea5e9;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: #e5e7eb;
+}
+
+.order-card p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.order-card b {
+  color: #38bdf8;
+}
+
+/* ===============================
+   CANCEL ORDER BUTTON (RED)
+================================ */
+
+.order-card button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.order-card button:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 480px) {
+  .order-card {
+    padding: 14px;
+  }
+
+  .order-card p {
+    font-size: 13px;
+  }
+
+  .order-card button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+.order-items {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 3px solid #0ea5e9;
+}
+
+/* ===============================
+   ORDER HEADER – CLEAN & SAFE
+================================ */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.order-id {
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+  max-width: calc(100% - 140px);
+}
+
+/* ===============================
+   DOWNLOAD RECEIPT BUTTON
+================================ */
+.invoice-btn {
+  background: #0ea5e9; /* site blue */
+  color: #000;
+  border: none;
+
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  min-width: auto;
+  max-width: fit-content;
+  flex-shrink: 0;     /* do NOT shrink */
+  flex-grow: 0;       /* do NOT expand */
+  white-space: nowrap;
+}
+
+.invoice-btn:hover {
+  background: #38bdf8;
+}
+
+/* ===============================
+   MOBILE ONLY ADJUSTMENT
+================================ */
+@media (max-width: 600px) {
+  .order-id {
+    max-width: calc(100% - 110px);
+    font-size: 13px;
+  }
+.invoice-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}  
+.receipt-btn {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.receipt-btn:hover {
+  background: #0284c7;
+}
+
